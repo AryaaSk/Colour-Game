@@ -1,3 +1,4 @@
+<!--
 <div class="container">
 
   <div class="pointContainerGrid">
@@ -8,10 +9,22 @@
 
   <br>
   
-  <div class="pointContainerGrid">
-    <div class="pointContainer" *ngFor="let point of userPoints">
+  <div cdkDrop cdkDropListOrientation="horizontal" (cdkDropDropped)="droppedUser($event)" class="pointContainerGrid">
+    <div cdkDrag class="pointContainer" *ngFor="let point of userPoints">
       <div class="point" [style.backgroundColor]="point"></div>
     </div>
   </div>
 
+
+  <div cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let timePeriod of timePeriods" cdkDrag>{{timePeriod}}</div>
+  </div>
+
+</div>
+-->
+
+<div style="height: 100vh; width: 100vw; display: grid; place-content: center;">
+  <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let movie of movies" cdkDrag>{{movie}}</div>
+  </div>
 </div>
