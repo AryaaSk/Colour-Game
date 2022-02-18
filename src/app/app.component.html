@@ -1,6 +1,6 @@
-<!--
 <div class="container">
 
+  <h2 style="margin: 0;">Correct Points:</h2>
   <div class="pointContainerGrid">
     <div class="pointContainer" *ngFor="let point of correctPoints">
       <div class="point" [style.backgroundColor]="point"></div>
@@ -8,23 +8,16 @@
   </div>
 
   <br>
-  
-  <div cdkDrop cdkDropListOrientation="horizontal" (cdkDropDropped)="droppedUser($event)" class="pointContainerGrid">
+  <h2 style="margin: 0;">User Points:</h2>
+  <div cdkDrop cdkDropOrientation="horizontal" (cdkDropDropped)="droppedUser($event)" class="pointContainerGrid">
     <div cdkDrag class="pointContainer" *ngFor="let point of userPoints">
       <div class="point" [style.backgroundColor]="point"></div>
     </div>
   </div>
 
-
-  <div cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let timePeriod of timePeriods" cdkDrag>{{timePeriod}}</div>
+  <br>
+  <div cdkDrop (cdkDropDropped)="dropped($event)" class="example-list">
+    <div cdkDrag class="example-box" *ngFor="let movie of movies">{{movie}}</div>
   </div>
 
-</div>
--->
-
-<div style="height: 100vh; width: 100vw; display: grid; place-content: center;">
-  <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let movie of movies" cdkDrag>{{movie}}</div>
-  </div>
 </div>

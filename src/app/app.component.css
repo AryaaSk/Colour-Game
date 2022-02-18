@@ -3,7 +3,6 @@
     width: 30px;
     height: 30px;
     border-radius: 15px;
-    margin-right: 10px;
 }
 
 .container
@@ -16,12 +15,14 @@
 }
 .pointContainerGrid
 {
-    width: 250px;
-    height: auto;
+    width: calc(50px * 5);
+    height: 50px;
 
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 100%;
+
+    background-color: transparent;
 }
 .pointContainer
 {
@@ -29,8 +30,7 @@
     place-content: center;
 }
 
-
-
+/* THE SHADOW WHEN DRAGGING IS CAUSED BY SOME OF THE BELOW CSS CODE */
 
 .example-list {
     width: 500px;
