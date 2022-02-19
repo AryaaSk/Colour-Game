@@ -1,23 +1,29 @@
 <div class="container">
+  <div class="containerInner">
 
-  <h2 style="margin: 0;">Correct Points:</h2>
-  <div class="pointContainerGrid">
-    <div class="pointContainer" *ngFor="let point of correctPoints">
-      <div class="point" [style.backgroundColor]="point"></div>
+    <h1 style="margin: 0;">Correct Colours:</h1>
+    <div class="pointContainerGrid">
+      <div class="pointContainer" *ngFor="let point of correctPoints">
+        <div class="point" [style.backgroundColor]="point"></div>
+      </div>
     </div>
-  </div>
+    <br>
 
-  <br>
-  <h2 style="margin: 0;">User Points:</h2>
-  <div cdkDrop cdkDropOrientation="horizontal" (cdkDropDropped)="droppedUser($event)" class="pointContainerGrid">
-    <div cdkDrag class="pointContainer" *ngFor="let point of userPoints">
-      <div class="point" [style.backgroundColor]="point"></div>
+    <h1 style="margin: 0;">Your Colours:</h1>
+    <div cdkDrop cdkDropOrientation="horizontal" (cdkDropDropped)="droppedUser($event)" class="pointContainerGrid">
+      <div cdkDrag class="pointContainer" style="cursor: move;" *ngFor="let point of userPoints">
+        <div class="point" [style.backgroundColor]="point"></div>
+      </div>
     </div>
-  </div>
 
-  <br>
-  <div cdkDrop (cdkDropDropped)="dropped($event)" class="example-list">
-    <div cdkDrag class="example-box" *ngFor="let movie of movies">{{movie}}</div>
-  </div>
+    <br>
+    <input type="button" value="Check" class="checkButton" (click)="check()">
 
+    <br>
+    <div class="results">
+      <h2>Correct: {{correctDisplay}}</h2>
+      <h2>Almost: {{alomostDisplay}}</h2>
+    </div>
+
+  </div>
 </div>

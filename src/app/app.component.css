@@ -1,10 +1,3 @@
-.point
-{
-    width: 30px;
-    height: 30px;
-    border-radius: 15px;
-}
-
 .container
 {
     width: 100vw;
@@ -13,70 +6,64 @@
     display: grid;
     place-content: center;
 }
+.containerInner
+{
+    width: 100%;
+    text-align: center;
+}
 .pointContainerGrid
 {
-    width: calc(50px * 5);
-    height: 50px;
+    width: calc(var(--pointContainerSize) * 5);
+    height: var(--pointContainerSize);
 
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 100%;
-
-    background-color: transparent;
 }
 .pointContainer
 {
     display: grid;
     place-content: center;
+
+    height: var(--pointContainerSize);
+    width: var(--pointContainerSize);
+}
+.point
+{
+    width: var(--pointSize);
+    height: var(--pointSize);
+    border-radius: calc(var(--pointSize) / 2);
 }
 
-/* THE SHADOW WHEN DRAGGING IS CAUSED BY SOME OF THE BELOW CSS CODE */
+/* THE SHADOW WHEN DRAGGING IS CAUSED BY THE BELOW CSS CODE */
+.cdk-drag-preview {
+box-sizing: border-box;
+border-radius: calc(var(--pointContainerSize) / 4);
+box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+            0 8px 10px 1px rgba(0, 0, 0, 0.14),
+            0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+.cdk-drag-placeholder /*This hides the item which is being dragged from its original place*/
+{ opacity: 0; }
+.pointContainerGrid.cdk-drop-list-dragging .pointContainer:not(.cdk-drag-placeholder) { /*This is meant to createa an animation when you drag an item but it does not work */
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
 
-.example-list {
-    width: 500px;
-    max-width: 100%;
-    border: solid 1px #ccc;
-    min-height: 60px;
-    display: block;
-    background: white;
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  
-  .example-box {
-    padding: 20px 10px;
-    border-bottom: solid 1px #ccc;
-    color: rgba(0, 0, 0, 0.87);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    box-sizing: border-box;
-    cursor: move;
-    background: white;
-    font-size: 14px;
-  }
-  
-  .cdk-drag-preview {
-    box-sizing: border-box;
-    border-radius: 4px;
-    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-                0 8px 10px 1px rgba(0, 0, 0, 0.14),
-                0 3px 14px 2px rgba(0, 0, 0, 0.12);
-  }
-  
-  .cdk-drag-placeholder {
-    opacity: 0;
-  }
-  
-  .cdk-drag-animating {
-    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-  }
-  
-  .example-box:last-child {
+
+.checkButton
+{
+    width: 400px;
+    height: 60px;
+
     border: none;
-  }
+    border-radius: 20px;
+    background-color: skyblue;
+
+    cursor: pointer;
+    font-size: 25px;
+    font-weight: bold;
+}
+.checkButton:active
+{
+    background-color: rgb(76, 156, 187);
+}
   
-  .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
-    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-  }
