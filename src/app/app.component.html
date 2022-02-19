@@ -1,37 +1,68 @@
-<div class="container">
-  <div class="containerInner">
+<div class="containerOuter">
+  <div class="container">
 
-    <div style="text-align: center;">
-      Previous Moves:
-      
-    </div>
+    <div class="containerInner">
+      <h1>Previous Moves:</h1>
 
-    <div style="text-align: center;">
-      <h1 style="margin: 0;">Correct Colours:</h1>
-      <div class="pointContainerGrid">
-        <div class="pointContainer" *ngFor="let point of correctPoints">
-          <div class="point" [style.backgroundColor]="point"></div>
-        </div>
+      <div class="previousPointRow" style="border-bottom: 1px solid rgb(187, 187, 187); height: 40px;">
+        <div style="display: grid; place-content: center;"><h2>Colours</h2></div>
+        <div style="display: grid; place-content: center;"><h2>Correct</h2></div>
+        <div style="display: grid; place-content: center;"><h2>Almost</h2></div>
       </div>
-      <br>
 
-      <h1 style="margin: 0;">Your Colours:</h1>
+      <div style="width: 100%; margin-top: 10px;" *ngIf="previousMoves.length == 0">No Moves Yet...</div>
+
+      <div class="previousPointRow" *ngFor="let move of previousMoves">
+        <div style="display: flex; align-items: center;">
+          <div class="pointContainerGrid">
+            <div class="pointContainer" *ngFor="let point of move.points">
+              <div  class="point previous" [style.backgroundColor]="point"></div>
+            </div>
+          </div>
+        </div>
+        <div style="display: grid; place-content: center;"><h2>{{move.correct}}</h2></div>
+        <div style="display: grid; place-content: center;"><h2>{{move.almost}}</h2></div>
+      </div>
+
+    </div>
+    
+    <div class="containerInner"></div> <!-- Buffer Div -->
+
+    <div class="containerInner">
+      <h1>Your Moves:</h1>
+  
       <div cdkDrop cdkDropOrientation="horizontal" (cdkDropDropped)="droppedUser($event)" class="pointContainerGrid">
-        <div cdkDrag class="pointContainer" style="cursor: move;" *ngFor="let point of userPoints">
-          <div class="point" [style.backgroundColor]="point"></div>
+        <div cdkDrag class="pointContainer" style="cursor: move;" class="pointContainer" *ngFor="let point of userPoints">
+          <div  class="point" [style.backgroundColor]="point"></div>
         </div>
       </div>
 
-      <br>
-      <input type="button" value="Check" class="checkButton" (click)="check()">
+      <div *ngIf="gameOver == false">
+        <br>
+        <input type="button" value="Check" class="checkButton" (click)="check()">
+      </div>
 
       <br>
-      <div class="results">
-        <h2>Move Left: {{moveCount}}</h2>
-        <h2>Correct: {{correctDisplay}}</h2>
-        <h2>Almost: {{alomostDisplay}}</h2>
+      <div>
+        <h2 class="text">Moves Left: {{moveCount}}</h2>
+        <h2 class="text">Correct: {{correctDisplay}}</h2>
+        <h2 class="text">Almost: {{alomostDisplay}}</h2>
+      </div>
+
+      <div *ngIf="gameOver == true">
+        <h2 *ngIf="correctDisplay == availableColours.length">You Win!</h2>
+        <h2 *ngIf="correctDisplay != availableColours.length">Game Over: You have run out of moves</h2>
+      </div>
+
+      <div *ngIf="gameOver == true">
+        <br>
+        <input type="button" value="Play again" class="checkButton" (click)="startGame()">
       </div>
     </div>
 
-  </div>
+    <div class="containerInner" style="grid-column: 1 / 4;">
+      Made by Aryaa SK, Game Idea by Praneel
+    </div>
+
+  </div>  
 </div>

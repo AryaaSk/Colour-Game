@@ -45,10 +45,10 @@ export class AppComponent {
   userPoints: string[] = [];
   
   moveCount = 0;
+  previousMoves: {points: string[], correct: number, almost: number}[] = [];
+  gameOver = false;
   startGame()
   {
-    this.moveCount = 5 + 1; //6 to account for the check at the start, so the user gets 5 moves
-
     //shuffle the colours
     this.correctPoints = this.shuffle(this.availableColours);
     this.userPoints = this.shuffle(this.availableColours);
@@ -56,6 +56,13 @@ export class AppComponent {
     //then check to make sure the colours arent already correct (if it is all correct then restart the game)
     if (this.check().correct == this.availableColours.length)
     { this.startGame(); }
+
+    //if it gets past the previous step then we know the game has begun
+    this.previousMoves = []; //reset the previousMoves
+    this.moveCount = 5 //user gets 5 moves
+    this.gameOver = false;
+
+    console.log(this.correctPoints)
   }
 
   correctDisplay = 0;
@@ -98,16 +105,12 @@ export class AppComponent {
     this.correctDisplay = correct;
     this.alomostDisplay = almost;
 
-    if (this.correctDisplay == this.availableColours.length)
+    const userPointsCopy = JSON.parse(JSON.stringify(this.userPoints))
+    this.previousMoves.unshift({points: userPointsCopy, correct: this.correctDisplay, almost: this.alomostDisplay});
+
+    if (this.correctDisplay == this.availableColours.length || this.moveCount == 0)
     {
-      alert("You Win!\nClick Ok/Close to start a new game")
-      this.startGame()
-    }
-    else if (this.moveCount == 0)
-    {
-      //game over
-      alert("Game Over: You have run out of moves\nClick Ok/Close to start a new game");
-      this.startGame()
+      this.gameOver = true;
     }
 
     return {correct: correct, almost: almost}

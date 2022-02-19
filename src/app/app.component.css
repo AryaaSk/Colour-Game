@@ -1,33 +1,41 @@
-.container
+.containerOuter
 {
     width: 100vw;
     height: 100vh;
+}
+.container
+{
+    margin: 0 auto;
+
+    width: 1000px;
+    height: 100%;
 
     display: grid;
-    place-content: center;
+    grid-template-columns: 40% 5% 55%;
+    grid-template-rows: 95% 5%;
 }
 .containerInner
 {
     width: 100%;
-
-    display: grid;
-    grid-template-columns: 50% 50%;
+    text-align: center;
 }
+
 .pointContainerGrid
 {
-    width: calc(var(--pointContainerSize) * 5);
-    height: var(--pointContainerSize);
+    width: 100%;
+    height: auto;
 
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 100%;
 }
 .pointContainer
 {
+    height: 100%;
+    width: 100%;
+
     display: grid;
     place-content: center;
-
-    height: var(--pointContainerSize);
-    width: var(--pointContainerSize);
 }
 .point
 {
@@ -35,31 +43,19 @@
     height: var(--pointSize);
     border-radius: calc(var(--pointSize) / 2);
 }
-
-/* THE SHADOW WHEN DRAGGING IS CAUSED BY THE BELOW CSS CODE (Don't need it anymore as it looks better without it) */
-/*
-.cdk-drag-preview {
-box-sizing: border-box;
-border-radius: calc(var(--pointContainerSize) / 4);
-box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-            0 8px 10px 1px rgba(0, 0, 0, 0.14),
-            0 3px 14px 2px rgba(0, 0, 0, 0.12);
-}
-*/
 .cdk-drag-placeholder /*This hides the item which is being dragged from its original place*/
 { opacity: 0; }
 .pointContainerGrid.cdk-drop-dragging .pointContainer:not(.cdk-drag-placeholder) { /*This is the dragging animation*/
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-
 .checkButton
 {
     width: 400px;
-    height: 60px;
+    height: 40px;
 
     border: none;
-    border-radius: 20px;
+    border-radius: 10px;
     background-color: skyblue;
 
     cursor: pointer;
@@ -70,4 +66,20 @@ box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
 {
     background-color: rgb(76, 156, 187);
 }
-  
+
+.previousPointRow
+{
+    width: 100%;
+    height: 50px;
+
+    display: grid;
+    grid-template-columns: 50% 25% 25%;
+    grid-template-rows: 100%;
+}
+
+.point.previous
+{
+    width: var(--pointSizePrevious);
+    height: var(--pointSizePrevious);
+    border-radius: calc(var(--pointSizePrevious) / 2);
+}
