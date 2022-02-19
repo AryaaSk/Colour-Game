@@ -44,8 +44,11 @@ export class AppComponent {
   correctPoints: string[] = [];
   userPoints: string[] = [];
   
+  moveCount = 0;
   startGame()
   {
+    this.moveCount = -1; //-1 to account for the check at the start
+
     //shuffle the colours
     this.correctPoints = this.shuffle(this.availableColours);
     this.userPoints = this.shuffle(this.availableColours);
@@ -59,6 +62,8 @@ export class AppComponent {
   alomostDisplay = 0;
   check()
   {
+    this.moveCount += 1; //everytime the user clicks check, it adds 1 to the move count
+
     //checks which colours are in the same position in both lists, then checks which are in within 1 point of another
     var correct = 0;
     var almost = 0;
