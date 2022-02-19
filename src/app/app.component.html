@@ -1,29 +1,36 @@
 <div class="container">
   <div class="containerInner">
 
-    <h1 style="margin: 0;">Correct Colours:</h1>
-    <div class="pointContainerGrid">
-      <div class="pointContainer" *ngFor="let point of correctPoints">
-        <div class="point" [style.backgroundColor]="point"></div>
-      </div>
-    </div>
-    <br>
-
-    <h1 style="margin: 0;">Your Colours:</h1>
-    <div cdkDrop cdkDropOrientation="horizontal" (cdkDropDropped)="droppedUser($event)" class="pointContainerGrid">
-      <div cdkDrag class="pointContainer" style="cursor: move;" *ngFor="let point of userPoints">
-        <div class="point" [style.backgroundColor]="point"></div>
-      </div>
+    <div style="text-align: center;">
+      Previous Moves:
+      
     </div>
 
-    <br>
-    <input type="button" value="Check" class="checkButton" (click)="check()">
+    <div style="text-align: center;">
+      <h1 style="margin: 0;">Correct Colours:</h1>
+      <div class="pointContainerGrid">
+        <div class="pointContainer" *ngFor="let point of correctPoints">
+          <div class="point" [style.backgroundColor]="point"></div>
+        </div>
+      </div>
+      <br>
 
-    <br>
-    <div class="results">
-      <h2>Move Count: {{moveCount}}</h2>
-      <h2>Correct: {{correctDisplay}}</h2>
-      <h2>Almost: {{alomostDisplay}}</h2>
+      <h1 style="margin: 0;">Your Colours:</h1>
+      <div cdkDrop cdkDropOrientation="horizontal" (cdkDropDropped)="droppedUser($event)" class="pointContainerGrid">
+        <div cdkDrag class="pointContainer" style="cursor: move;" *ngFor="let point of userPoints">
+          <div class="point" [style.backgroundColor]="point"></div>
+        </div>
+      </div>
+
+      <br>
+      <input type="button" value="Check" class="checkButton" (click)="check()">
+
+      <br>
+      <div class="results">
+        <h2>Move Left: {{moveCount}}</h2>
+        <h2>Correct: {{correctDisplay}}</h2>
+        <h2>Almost: {{alomostDisplay}}</h2>
+      </div>
     </div>
 
   </div>

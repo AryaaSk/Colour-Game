@@ -47,7 +47,7 @@ export class AppComponent {
   moveCount = 0;
   startGame()
   {
-    this.moveCount = -1; //-1 to account for the check at the start
+    this.moveCount = 5 + 1; //6 to account for the check at the start, so the user gets 5 moves
 
     //shuffle the colours
     this.correctPoints = this.shuffle(this.availableColours);
@@ -62,7 +62,7 @@ export class AppComponent {
   alomostDisplay = 0;
   check()
   {
-    this.moveCount += 1; //everytime the user clicks check, it adds 1 to the move count
+    this.moveCount -= 1; //everytime the user clicks check, it adds 1 to the move count
 
     //checks which colours are in the same position in both lists, then checks which are in within 1 point of another
     var correct = 0;
@@ -97,6 +97,19 @@ export class AppComponent {
 
     this.correctDisplay = correct;
     this.alomostDisplay = almost;
+
+    if (this.correctDisplay == this.availableColours.length)
+    {
+      alert("You Win!\nClick Ok/Close to start a new game")
+      this.startGame()
+    }
+    else if (this.moveCount == 0)
+    {
+      //game over
+      alert("Game Over: You have run out of moves\nClick Ok/Close to start a new game");
+      this.startGame()
+    }
+
     return {correct: correct, almost: almost}
   }
 

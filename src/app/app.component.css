@@ -9,7 +9,9 @@
 .containerInner
 {
     width: 100%;
-    text-align: center;
+
+    display: grid;
+    grid-template-columns: 50% 50%;
 }
 .pointContainerGrid
 {
