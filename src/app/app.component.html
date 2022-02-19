@@ -29,7 +29,7 @@
     <div class="containerInner"></div> <!-- Buffer Div -->
 
     <div class="containerInner">
-      <h1>Your Moves:</h1>
+      <h1>Your Order:</h1>
   
       <div cdkDrop cdkDropOrientation="horizontal" (cdkDropDropped)="droppedUser($event)" class="pointContainerGrid">
         <div cdkDrag class="pointContainer" style="cursor: move;" class="pointContainer" *ngFor="let point of userPoints">
@@ -54,6 +54,15 @@
         <h2 *ngIf="correctDisplay != availableColours.length">Game Over: You have run out of moves</h2>
       </div>
 
+      <div *ngIf="gameOver == true"> <!-- Showing correct colours -->
+        <h1>Correct Order:</h1>
+        <div class="pointContainerGrid">
+          <div class="pointContainer" *ngFor="let point of correctPoints">
+            <div  class="point" [style.backgroundColor]="point"></div>
+          </div>
+        </div>
+      </div>
+
       <div *ngIf="gameOver == true">
         <br>
         <input type="button" value="Play again" class="checkButton" (click)="startGame()">
@@ -61,7 +70,7 @@
     </div>
 
     <div class="containerInner" style="grid-column: 1 / 4;">
-      Made by Aryaa SK, Game Idea by Praneel
+      Made by Aryaa SK, game idea by Praneel
     </div>
 
   </div>  
