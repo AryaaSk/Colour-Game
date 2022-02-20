@@ -50,11 +50,11 @@
       </div>
 
       <div *ngIf="gameOver == true">
-        <h2 *ngIf="correctDisplay == availableColours.length">You Win!</h2>
+        <h2 *ngIf="correctDisplay == availableColours.length">You Win: You got the correct order!</h2>
         <h2 *ngIf="correctDisplay != availableColours.length">Game Over: You have run out of moves</h2>
       </div>
 
-      <div *ngIf="gameOver == true"> <!-- Showing correct colours -->
+      <div *ngIf="gameOver == true && correctDisplay != availableColours.length"> <!-- Showing correct colours if the user didn't get them-->
         <h1>Correct Order:</h1>
         <div class="pointContainerGrid">
           <div class="pointContainer" *ngFor="let point of correctPoints">

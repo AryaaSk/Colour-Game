@@ -106,7 +106,7 @@ export class AppComponent {
     this.alomostDisplay = almost;
 
     const userPointsCopy = JSON.parse(JSON.stringify(this.userPoints))
-    this.previousMoves.unshift({points: userPointsCopy, correct: this.correctDisplay, almost: this.alomostDisplay});
+    this.previousMoves.push({points: userPointsCopy, correct: this.correctDisplay, almost: this.alomostDisplay});
 
     if (this.correctDisplay == this.availableColours.length || this.moveCount == 0)
     {
