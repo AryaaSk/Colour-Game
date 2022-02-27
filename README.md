@@ -4,8 +4,8 @@ A game where you have to try and get all the colours in the correct order, it sh
 
 Here are some previews:
 
-!(Preview1)[https://github.com/AryaaSk/Colour-Game/blob/master/Previews/screenshot1.png?raw=true]
+![Preview1](https://github.com/AryaaSk/Colour-Game/blob/master/Previews/screenshot1.png?raw=true)
 
-!(Preview2)[https://github.com/AryaaSk/Colour-Game/blob/master/Previews/screenshot2.png?raw=true]
+![Preview2](https://github.com/AryaaSk/Colour-Game/blob/master/Previews/screenshot2.png?raw=true)
 
 Correct means the colour is in the correct position, almost means it is 1 within the correct position
